@@ -1,0 +1,27 @@
+{
+  "name": "admission-api",
+  "version": "1.0.0",
+  "description": "Admission Automation System API",
+  "keywords": [
+    "fsd-project"
+  ],
+  "license": "GPL-3.0-or-later",
+  "author": "Sanjeev Singh, Samarth Srivastava, Saurav Goswami, Suryansh Ranjan",
+  "type": "commonjs",
+  "main": "dist/app.js",
+  "scripts": {
+    "dev" : "ts-node src/app.ts",
+    "build": "tsc",
+    "prod" : "npm run build && node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.14.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
