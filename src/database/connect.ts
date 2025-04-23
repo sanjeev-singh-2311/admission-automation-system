@@ -1,4 +1,5 @@
-import config from "@src/config/config"
+import path from "path"
+import config from "../config/config"
 import { Db, MongoClient } from "mongodb"
 
 const user_name = config("MONGO_USER")
@@ -12,11 +13,11 @@ const pool = new MongoClient(uri, {
     maxIdleTimeMS: 3 * 1000
 })
 
-export default async function get_connection(db_name: string): Promise<Db> {
+export default async function get_connection(db_name: string): Promise<{ db: Db, client: MongoClient }> {
     try {
         const connector = await pool.connect()
         const db = connector.db(db_name)
-        return db
+        return { db: db, client: connector }
     } catch (e) {
         throw new Error("Error frfr")
     }

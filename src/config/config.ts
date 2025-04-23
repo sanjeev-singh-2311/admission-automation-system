@@ -1,8 +1,7 @@
 import dotenv from "dotenv"
 
+dotenv.config()
+
 export default function config(key: string): string {
-    dotenv.config({
-        path: "@src/.env"
-    })
     return process.env[key] || ""
 }
