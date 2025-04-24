@@ -6,12 +6,7 @@ import { WithId } from "mongodb"
 export async function get_all_courses(_: Request, res: Response) {
     try {
         const { db, client } = await get_connection("admission-automation")
-        const result_cur = db.collection("courses").find()
-
-        let result: CourseWithID[] = []
-        for await (const r of result_cur) {
-            result.push(r as WithId<Document> & CourseWithID);
-        }
+        const result: CourseWithID[] = await db.collection("courses").find().toArray() as (WithId<Document> & CourseWithID)[]
 
         client.close()
         res.status(200).json({
