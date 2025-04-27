@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { add_new_course, get_all_courses, get_course_by_id } from "../internals/courses-internals"
+import { add_new_course, get_all_courses, get_course_by_id, get_course_by_name, update_course_by_id } from "../internals/courses-internals"
 
 export default function set_course_routes_v1(router: Router) {
     // GET all course details
@@ -10,7 +10,7 @@ export default function set_course_routes_v1(router: Router) {
     router.get("/courses/search", () => { })
 
     // GET course detail by course name
-    router.get("/courses/name/:courseName", () => { })
+    router.get("/courses/name/:course_name", get_course_by_name)
 
     // GET course detail by id
     router.get("/courses/id/:id", get_course_by_id)
@@ -19,5 +19,5 @@ export default function set_course_routes_v1(router: Router) {
     router.post("/courses", add_new_course)
 
     // UPDATE a course by id
-    router.put("/courses/:id", () => { })
+    router.put("/courses/:id", update_course_by_id)
 }
