@@ -27,4 +27,7 @@ export default function set_course_routes_v1(router: Router) {
 
     // UPDATE a course by id
     router.put("/courses/:id", update_course_by_id)
+
+    // DELETE a course by id
+    router.delete("/courses/:id", delete_course_by_id)
 }

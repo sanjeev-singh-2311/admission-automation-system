@@ -134,3 +134,24 @@ export async function update_course_by_id(req: Request, res: Response) {
         return
     }
 }
+
+export async function delete_course_by_id(req: Request, res: Response) {
+    try {
+        const { db, client } = await get_connection("admission-automation")
+
+        const id = new ObjectId(req.params["id"])
+        const result = await db.collection("courses").deleteOne({ _id: id })
+
+        client.close()
+        res.status(200).json({
+            data: result,
+            message: "Data delete success"
+        })
+        return
+    } catch (e) {
+        res.status(400).json({
+            data: {},
+            message: "" + e
+        })
+    }
+}
