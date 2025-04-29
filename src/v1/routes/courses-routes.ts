@@ -1,5 +1,12 @@
 import { Router } from "express"
-import { add_new_course, get_all_courses, get_course_by_id, get_course_by_name, update_course_by_id } from "../internals/courses-internals"
+import {
+    add_new_course,
+    delete_course_by_id,
+    get_all_courses,
+    get_course_by_id,
+    get_course_by_name,
+    update_course_by_id
+} from "../internals/courses-internals"
 
 export default function set_course_routes_v1(router: Router) {
     // GET all course details
